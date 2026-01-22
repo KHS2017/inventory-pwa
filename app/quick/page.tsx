@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useEffect, useMemo, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
@@ -15,14 +15,17 @@ type ItemRow = {
   updated_at: string | null;
   suppliers?: { name: string } | null;
   categories?: { name: string } | null;
-};
 
-export default function QuickPage() {
   const supabase = useMemo(() => {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-    return createClient(url, anon);
-  }, []);
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !anon) {
+    throw new Error('Supabase env vars are missing');
+  }
+
+  return createClient(url, anon);
+}, []);
 
   const [items, setItems] = useState<ItemRow[]>([]);
   const [loading, setLoading] = useState(true);
