@@ -177,3 +177,12 @@ const input: React.CSSProperties = { padding: 8, border: "1px solid #ddd", borde
 const btn: React.CSSProperties = { padding: "8px 10px", border: "1px solid #ddd", borderRadius: 10, background: "#fff", cursor: "pointer" };
 const btnSmall: React.CSSProperties = { padding: "6px 10px", border: "1px solid #ddd", borderRadius: 10, background: "#fff", cursor: "pointer" };
 const linkBtn: React.CSSProperties = { ...btn, textDecoration: "none", display: "inline-flex", alignItems: "center" };
+// app/quick/page.tsx
+export default function QuickPage() {
+  return (
+    <div style={{ padding: 20 }}>
+      <h1>빠른입력</h1>
+      <p>빠른 입력 페이지 정상 연결됨</p>
+    </div>
+  );
+}
